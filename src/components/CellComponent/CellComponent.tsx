@@ -20,6 +20,10 @@ export const CellComponent: FC<CellComponentProps> = ({ cell }) => {
         [styles.Black]: cell.color === Colors.BLACK,
         [styles.White]: cell.color === Colors.WHITE,
       })}
-    ></div>
+    >
+      {cell.figure?.logo && (
+        <img src={cell.figure?.logo} alt={cell.figure.name} />
+      )}
+    </div>
   );
 };
