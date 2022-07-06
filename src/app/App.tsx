@@ -12,6 +12,7 @@ export const App: FC = () => {
   const restartGame = (): void => {
     const newBoard = new Board();
     newBoard.initCell();
+    newBoard.addFigures();
     setBoard(newBoard);
   };
 
