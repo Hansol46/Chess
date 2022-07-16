@@ -1,7 +1,9 @@
 import { useCallback, useEffect } from "react";
 import { FC, useState } from "react";
+import { Timer } from "../components";
 
 import { BoardComponent } from "../components/BoardComponent";
+import { LostFigures } from "../components/LostFigures/LostFigures";
 import { Board, Colors, Player } from "../models";
 
 import styles from "./styles.module.sass";
@@ -32,7 +34,17 @@ export const App: FC = () => {
 
   return (
     <div className={styles.BoardWrapper}>
-      <BoardComponent board={board} setBoard={setBoard} currentPlayer={currentPlayer} swapPlayer={swapPlayer}/>
+      <Timer currentPlayer={currentPlayer} restart={restartGame} />
+      <BoardComponent
+        board={board}
+        setBoard={setBoard}
+        currentPlayer={currentPlayer}
+        swapPlayer={swapPlayer}
+      />
+      <div>
+        <LostFigures title="Черные фигуры" figures={board.lostBlackFigures} />
+        <LostFigures title="Белые фигуры" figures={board.lostWhiteFigures} />
+      </div>
     </div>
   );
 };
