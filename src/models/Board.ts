@@ -1,9 +1,11 @@
 import { Cell } from "./Cell";
 import { Colors } from "./Colors";
-import { Bishop, King, Knight, Pawn, Queen, Rook } from "./figures";
+import { Bishop, Figure, King, Knight, Pawn, Queen, Rook } from "./figures";
 
 export class Board {
   cells: Cell[][] = [];
+  lostBlackFigures: Figure[] = [];
+  lostWhiteFigures: Figure[] = [];
 
   public initCell() {
     for (let i = 0; i < 8; i++) {
@@ -64,6 +66,8 @@ export class Board {
   public getCopyBoard(): Board {
     const newBoard = new Board();
     newBoard.cells = this.cells;
+    newBoard.lostBlackFigures = this.lostBlackFigures;
+    newBoard.lostWhiteFigures = this.lostWhiteFigures;
     return newBoard;
   }
 
