@@ -2,6 +2,7 @@ import { FC, Fragment, useEffect, useState } from "react";
 
 import { CellComponent } from "../CellComponent";
 import { Board, Cell, Player } from "../../models";
+import { LostFigures } from "../LostFigures";
 
 import styles from "./styles.module.sass";
 
@@ -11,6 +12,8 @@ interface BoardComponentProps {
   currentPlayer: Player | null;
   swapPlayer: () => void;
 }
+
+
 
 /**
  * Доска
@@ -56,8 +59,9 @@ export const BoardComponent: FC<BoardComponentProps> = ({
   };
 
   return (
-    <div>
-      <h3>Текущий игрок: {currentPlayer?.color}</h3>
+    <div className={styles.BoardContainer}>
+      <LostFigures title="Белые фигуры" figures={board.lostWhiteFigures} />
+
       <div className={styles.Board}>
         {board.cells.map((row, index) => (
           <Fragment key={index}>
@@ -74,6 +78,8 @@ export const BoardComponent: FC<BoardComponentProps> = ({
           </Fragment>
         ))}
       </div>
+
+      <LostFigures title="Черные фигуры" figures={board.lostBlackFigures} />
     </div>
   );
 };
