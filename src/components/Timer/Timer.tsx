@@ -1,5 +1,8 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { Colors, Player } from "../../models";
+import { ColorPlayer } from "../../models/ColorPlayer";
+
+import styles from "./styles.module.sass";
 
 interface TimerProps {
   currentPlayer: Player | null;
@@ -33,7 +36,7 @@ export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
   const handleRestart = () => {
     setBlackTime(300);
     setWhiteTime(300);
-    restart()
+    restart();
   };
 
   useEffect(() => {
@@ -41,12 +44,23 @@ export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
   }, [currentPlayer]);
 
   return (
-    <div>
-      <div>
-        <button onClick={handleRestart}>Restart game</button>
+    <div className={styles.Pannel}>
+      <h3>Текущий игрок: {ColorPlayer[currentPlayer?.color || "White"]}</h3>
+
+      <div className={styles.Timer}>
+        <button onClick={handleRestart} style={{width: '100%', padding: '8px'}}>Начать заново</button>
+
+        <div style={{ display: "flex", gap: '10px', justifyContent: 'space-around', margin: '15px 0px', }}>
+          <div>
+            <h2>Черные</h2>
+            <h3> {blackTime} сек.</h3>
+          </div>
+          <div>
+            <h2>Белые </h2>
+            <h3> {whiteTime} сек.</h3>
+          </div>
+        </div>
       </div>
-      <h2>Черные - {blackTime}</h2>
-      <h2>Белые - {whiteTime}</h2>
     </div>
   );
 };
