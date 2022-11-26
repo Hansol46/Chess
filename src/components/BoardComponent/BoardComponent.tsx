@@ -1,7 +1,8 @@
 import { FC, Fragment, useEffect, useState } from "react";
 
 import { CellComponent } from "../CellComponent";
-import { Board, Cell, Player } from "../../models";
+import { Board, Cell, Colors, Player } from "../../models";
+import { PlayerMenu } from "../PlayerMenu";
 import { LostFigures } from "../LostFigures";
 
 import styles from "./styles.module.sass";
@@ -59,8 +60,10 @@ export const BoardComponent: FC<BoardComponentProps> = ({
   };
 
   return (
-    <div className={styles.BoardContainer}>
-      <LostFigures title="Белые фигуры" figures={board.lostWhiteFigures} />
+    <div>
+      <PlayerMenu playerColor={Colors.BLACK} />
+
+      <LostFigures figures={board.lostWhiteFigures} />
 
       <div className={styles.Board}>
         {board.cells.map((row, index) => (
@@ -79,7 +82,9 @@ export const BoardComponent: FC<BoardComponentProps> = ({
         ))}
       </div>
 
-      <LostFigures title="Черные фигуры" figures={board.lostBlackFigures} />
+      <LostFigures figures={board.lostBlackFigures} />
+
+      <PlayerMenu playerColor={Colors.WHITE} />
     </div>
   );
 };
