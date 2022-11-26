@@ -1,8 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
-import { Colors, Player } from "../../models";
-import { ColorPlayer } from "../../models/ColorPlayer";
+import { ColorPlayer, Colors, Player } from "../../models";
 
-import styles from "./styles.module.sass";
+import styles from './styles.module.sass';
 
 interface TimerProps {
   currentPlayer: Player | null;
@@ -45,10 +44,10 @@ export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
 
   return (
     <div className={styles.Pannel}>
-      <h3>Текущий игрок: {ColorPlayer[currentPlayer?.color || "White"]}</h3>
+      <h3 style={{color:'white'}}>Текущий игрок: {ColorPlayer[currentPlayer?.color || "White"]}</h3>
 
       <div className={styles.Timer}>
-        <button onClick={handleRestart} style={{width: '100%', padding: '8px'}}>Начать заново</button>
+        <button onClick={handleRestart} style={{width: '100%', padding: '8px', borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}>Начать заново</button>
 
         <div style={{ display: "flex", gap: '10px', justifyContent: 'space-around', margin: '15px 0px', }}>
           <div>
