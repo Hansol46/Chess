@@ -1,6 +1,6 @@
 Template for pet project
 
-<img src="./public/test_game.png" width="800" height="400" title="hover text">
+<img src="./public/test_game.png" width="600" height="400" title="hover text">
 
 practice OOP
 TypeScript
