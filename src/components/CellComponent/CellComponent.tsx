@@ -24,14 +24,14 @@ export const CellComponent: FC<CellComponentProps> = ({
   return (
     <div
       className={cn(styles.Cell, {
-        [styles.Black]: cell.color === Colors.BLACK && !selected,
-        [styles.White]: cell.color === Colors.WHITE && !selected,
-        [styles.Selected]: selected,
+        [styles.BlackCell]: cell.color === Colors.BLACK && !selected,
+        [styles.WhiteCell]: cell.color === Colors.WHITE && !selected,
+        [styles.AvailableCellForAttack]: cell.available && cell.figure,
+        [styles.SelectedFigure]: selected,
       })}
-      style={{ background: cell.available && cell.figure ? "green" : "" }} // заменить
       onClick={() => onCellClick(cell)}
     >
-      {cell.available && !cell.figure && <div className={styles.Available} />}
+      {cell.available && !cell.figure && <div className={styles.AvailableCellForMove} />}
       {cell.figure?.logo && (
         <img src={cell.figure?.logo} alt={cell.figure.name} />
       )}

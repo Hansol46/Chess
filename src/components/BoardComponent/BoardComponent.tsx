@@ -14,8 +14,6 @@ interface BoardComponentProps {
   swapPlayer: () => void;
 }
 
-
-
 /**
  * Доска
  */
@@ -51,7 +49,6 @@ export const BoardComponent: FC<BoardComponentProps> = ({
       selectedCell.moveFigure(cell);
       swapPlayer();
       setSelectedCell(null);
-      // updateBoard(); Нуждно ли?
     } else {
       if (cell.figure?.color === currentPlayer?.color) {
         setSelectedCell(cell);
