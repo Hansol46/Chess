@@ -1,7 +1,25 @@
-Template for pet project
+# Edu project chess
+
+Legendary logic game created with TypeScript.
+Project made for traning skills and private interes.
 
 <img src="./public/test_game.png" width="500" height="400" title="hover text">
 
-practice OOP
-TypeScript
-sass modules
+<!-- You can view on this link - [link](https://day-viewer.vercel.app/login) <br /> -->
+## Tech 
+  - React/TypeScript
+  - OPP
+  - sass modules
+
+
+## Commands:
+### installation: 
+```
+    $ npm i
+```
+
+### launch: 
+```
+    $ npm start
+``` 
+
