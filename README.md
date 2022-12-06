@@ -6,6 +6,8 @@ Project made for traning skills and private interes.
   You can view on this link - https://chess-peach.vercel.app/
 </div>
 
+<br />
+
 <img src="./public/test_game.png" width="500" height="400" title="hover text">
 
 <!-- You can view on this link - [link](https://day-viewer.vercel.app/login) <br /> -->
