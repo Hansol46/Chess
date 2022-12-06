@@ -3,7 +3,7 @@
 Legendary logic game created with TypeScript.
 Project made for traning skills and private interes.
 <div>
-  You can view on this link - (https://chess-peach.vercel.app/)
+  You can view on this link - https://chess-peach.vercel.app/
 </div>
 
 <img src="./public/test_game.png" width="500" height="400" title="hover text">
