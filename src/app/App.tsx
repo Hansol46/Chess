@@ -6,6 +6,7 @@ import { BoardComponent } from "../components/BoardComponent";
 import { Board, Colors, Player } from "../models";
 
 import styles from "./styles.module.sass";
+import "../styles/global.css";
 
 export const App: FC = () => {
   const [board, setBoard] = useState(new Board());
