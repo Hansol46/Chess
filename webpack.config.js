@@ -19,7 +19,7 @@ module.exports = {
   mode: "production",
   entry: "./src/index.tsx",
   output: {
-    publicPath: "auto",
+    path: path.resolve(__dirname, "build"),
     chunkFilename: "[contenthash].bundle.js",
     clean: true,
   },
@@ -60,7 +60,7 @@ module.exports = {
       chunkFilename: "[id].[contenthash].css",
     }),
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, "public", "index.html"), 
+      template: path.resolve(__dirname, "public", "index.html"),
     }),
   ],
 };
