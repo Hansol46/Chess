@@ -13,6 +13,7 @@ Project made for traning skills and private interes.
 
 ## Tech 
   - React/TypeScript
+  - Webpack
   - OOP
   - sass modules
 
