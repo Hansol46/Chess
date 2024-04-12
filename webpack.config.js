@@ -12,11 +12,7 @@ const cssLoader = {
   },
 };
 
-/**
- * Настроить dev server
- */
 module.exports = {
-  mode: "production",
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),
@@ -53,6 +49,13 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
+    alias: {
+      "@app": path.resolve(__dirname, "src/app/"),
+      "@pages": path.resolve(__dirname, "src/pages/"),
+      "@widgets": path.resolve(__dirname, "src/widgets/"),
+      "@entities": path.resolve(__dirname, "src/entities/"),
+      "@shared": path.resolve(__dirname, "src/shared/"),
+    },
   },
   plugins: [
     new MiniCssExtactPlugin({
@@ -63,4 +66,14 @@ module.exports = {
       template: path.resolve(__dirname, "public", "index.html"),
     }),
   ],
+  devServer: {
+    port: 3000,
+    static: {
+      directory: path.resolve(__dirname, "build"),
+    },
+    client: {
+      logging: "warn",
+      progress: true,
+    },
+  },
 };
