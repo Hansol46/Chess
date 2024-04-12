@@ -3,11 +3,11 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "webpack",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf build"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
