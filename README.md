@@ -11,21 +11,30 @@ Project made for traning skills and private interes.
 
 <img src="./public/test_game.png" width="500" height="400" title="hover text">
 
-## Tech 
-  - React/TypeScript
-  - Webpack
-  - OOP
-  - sass modules
+## Tech
 
+- React/TypeScript
+- Webpack
+- OOP
+- sass modules
 
 ## Commands:
-### installation: 
+
+### installation:
+
 ```
     $ npm i
 ```
 
-### launch: 
+### launch:
+
 ```
     $ npm start
-``` 
+```
 
+### Tasks
+
+1. redux
+2. jest
+3. add login and profile pages
+4. eslint
