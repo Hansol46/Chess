@@ -1,12 +1,11 @@
-import React,{ FC, Fragment, useEffect, useState } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 
-import { PlayerMenu } from "@entities/PlayerMenu";
-import { LostFigures } from "@entities/LostFigures";
 import { CellComponent } from "@entities/CellComponent";
+import { LostFigures } from "@entities/LostFigures";
+import { PlayerMenu } from "@entities/PlayerMenu";
 import { Board, Cell, Colors, Player } from "@shared/models";
 
 import styles from "./styles.module.sass";
-
 
 interface BoardComponentProps {
   board: Board;
@@ -25,23 +24,22 @@ export const BoardComponent: FC<BoardComponentProps> = ({
   swapPlayer,
 }) => {
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
+  const updateBoard = (): void => {
+    const newBoard = board.getCopyBoard();
+    setBoard(newBoard);
+  };
+
+  const highlightCells = (): void => {
+    board.highlightCells(selectedCell);
+    updateBoard();
+  };
 
   useEffect(() => {
     highlightCells();
     // eslint-disable-next-line
   }, [selectedCell]);
 
-  const highlightCells = () => {
-    board.highlightCells(selectedCell);
-    updateBoard();
-  };
-
-  const updateBoard = () => {
-    const newBoard = board.getCopyBoard();
-    setBoard(newBoard);
-  };
-
-  const onCellClick = (cell: Cell) => {
+  const onCellClick = (cell: Cell): void => {
     if (
       selectedCell &&
       selectedCell !== cell &&
@@ -50,10 +48,11 @@ export const BoardComponent: FC<BoardComponentProps> = ({
       selectedCell.moveFigure(cell);
       swapPlayer();
       setSelectedCell(null);
-    } else {
-      if (cell.figure?.color === currentPlayer?.color) {
-        setSelectedCell(cell);
-      }
+      return;
+    }
+
+    if (cell.figure?.color === currentPlayer?.color) {
+      setSelectedCell(cell);
     }
   };
 
@@ -65,6 +64,7 @@ export const BoardComponent: FC<BoardComponentProps> = ({
 
       <div className={styles.Board}>
         {board.cells.map((row, index) => (
+          // eslint-disable-next-line react/no-array-index-key
           <Fragment key={index}>
             {row.map((cell) => (
               <CellComponent
