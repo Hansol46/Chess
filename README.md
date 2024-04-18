@@ -40,22 +40,24 @@ Project made for traning skills and private interes.
 
 ### {segments} - ui, model, api, lib, config
 
+```
 {layer}/
-\_\_{slice}/
-\_\_\_\_# UI-логика(компоненты, стили, ...)
-\_\_\_\_ui/
+  {slice}/
+    # UI-логика(компоненты, стили, ...)
+    ui/
 
-\_\_\_\_# Бизнес-логика и модели данных (store,actions,reducers)
-\_\_\_\_model/
+    # Бизнес-логика и модели данных (store,actions,reducers)
+    model/
 
-\_\_\_\_# Логика запрос к api (api instances, endpoints)
-\_\_\_\_api/
+    # Логика запрос к api (api instances, endpoints)
+    api/
 
-\_\_\_\_# Служебная логика (helpers, utils, hooks)
-\_\_\_\_lib/
+    # Служебная логика (helpers, utils, hooks)
+    lib/
 
-\_\_\_\_# Конфигурация (константы, параметры)
-\_\_\_\_config/
+    # Конфигурация (константы, параметры)
+    config/
+```
 
 ### Tasks
 
