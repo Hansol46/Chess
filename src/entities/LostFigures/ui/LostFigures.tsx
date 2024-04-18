@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { Figure } from "@shared/models/figures";
+
+import { Figure } from "@shared/figures";
 
 import styles from "./styles.module.sass";
 

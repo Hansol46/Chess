@@ -1,14 +1,13 @@
-import { Cell } from "../Cell";
-import { Colors } from "../Colors";
-import { Figure } from "./Figure";
-import { FigureNames } from "./FigureNames";
-
 import blackLogo from "@shared/assets/black-pawn.png";
 import whiteLogo from "@shared/assets/white-pawn.png";
 
-export class Pawn extends Figure {
+import { Cell } from "../models/Cell";
+import { Colors } from "../models/Colors";
+import { Figure } from "./Figure";
+import { FigureNames } from "./FigureNames";
 
-  isFirstStep: boolean = true;
+export class Pawn extends Figure {
+  isFirstStep = true;
 
   constructor(color: Colors, cell: Cell) {
     super(color, cell); // это вызов конструктора родительского класса
@@ -24,19 +23,22 @@ export class Pawn extends Figure {
     const firstStepDirection =
       this.cell.figure?.color === Colors.BLACK ? 2 : -2;
 
-
-    if ((target.y === this.cell.y + direction || this.isFirstStep
-      && (target.y === this.cell.y + firstStepDirection))
-    && target.x === this.cell.x
-    && this.cell.board.getCell(target.x, target.y).isEmpty()) {
+    if (
+      (target.y === this.cell.y + direction ||
+        (this.isFirstStep && target.y === this.cell.y + firstStepDirection)) &&
+      target.x === this.cell.x &&
+      this.cell.board.getCell(target.x, target.y).isEmpty()
+    ) {
       return true;
     }
 
-    if(target.y === this.cell.y + direction
-      && (target.x === this.cell.x + 1 || target.x === this.cell.x - 1)
-      && this.cell.isEnemy(target)) {
-        return true;
-      }
+    if (
+      target.y === this.cell.y + direction &&
+      (target.x === this.cell.x + 1 || target.x === this.cell.x - 1) &&
+      this.cell.isEnemy(target)
+    ) {
+      return true;
+    }
 
     return false;
   }
