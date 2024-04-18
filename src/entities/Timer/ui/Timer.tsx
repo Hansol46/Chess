@@ -1,7 +1,8 @@
-import React,{ FC, useEffect, useRef, useState } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+
 import { ColorPlayer, Colors, Player } from "@shared/models";
 
-import styles from './styles.module.sass';
+import styles from "./styles.module.sass";
 
 interface TimerProps {
   currentPlayer: Player | null;
@@ -13,26 +14,28 @@ export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
   const [whiteTime, setWhiteTime] = useState(300);
   const timer = useRef<null | ReturnType<typeof setInterval>>(null);
 
-  const startTimer = () => {
+  const decrementWhiteTimer = (): void => {
+    setWhiteTime((prev) => prev - 1);
+  };
+
+  const decrementBlackTimer = (): void => {
+    setBlackTime((prev) => prev - 1);
+  };
+
+  const startTimer = useCallback((): void => {
     if (timer.current) {
       clearInterval(timer.current);
     }
+
     const callback =
       currentPlayer?.color === Colors.WHITE
         ? decrementWhiteTimer
         : decrementBlackTimer;
+
     timer.current = setInterval(callback, 1000);
-  };
+  }, [currentPlayer?.color]);
 
-  const decrementWhiteTimer = () => {
-    setWhiteTime((prev) => prev - 1);
-  };
-
-  const decrementBlackTimer = () => {
-    setBlackTime((prev) => prev - 1);
-  };
-
-  const handleRestart = () => {
+  const handleRestart = (): void => {
     setBlackTime(300);
     setWhiteTime(300);
     restart();
@@ -40,16 +43,24 @@ export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
 
   useEffect(() => {
     startTimer();
-  }, [currentPlayer]);
+  }, [currentPlayer, startTimer]);
 
   return (
     <div className={styles.Pannel}>
-      <h3 style={{color:'white'}}>Текущий игрок: {ColorPlayer[currentPlayer?.color || "White"]}</h3>
+      <h3 style={{ color: "white" }}>
+        Текущий игрок: {ColorPlayer[currentPlayer?.color || "White"]}
+      </h3>
 
-      <div className={styles.Timer}>
-        <button onClick={handleRestart} style={{width: '100%', padding: '8px', borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}>Начать заново</button>
+      <div className={styles.Actions}>
+        <button
+          type="button"
+          onClick={handleRestart}
+          className={styles.RestartButton}
+        >
+          Начать заново
+        </button>
 
-        <div style={{ display: "flex", gap: '10px', justifyContent: 'space-around', margin: '15px 0px', }}>
+        <div className={styles.Timer}>
           <div>
             <h2>Черные</h2>
             <h3> {blackTime} сек.</h3>

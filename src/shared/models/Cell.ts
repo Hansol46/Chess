@@ -1,14 +1,21 @@
+/* eslint-disable import/no-cycle */
+import { Figure } from "../figures";
 import { Board } from "./Board";
 import { Colors } from "./Colors";
-import { Figure } from "./figures";
 
 export class Cell {
   readonly x: number;
+
   readonly y: number;
+
   readonly color: Colors;
+
   figure: Figure | null;
+
   board: Board;
+
   available: boolean; // Можешь ли перемещаться
+
   id: number; // для реакт ключей
 
   constructor(
@@ -16,7 +23,7 @@ export class Cell {
     x: number,
     y: number,
     color: Colors,
-    figure: Figure | null
+    figure: Figure | null,
   ) {
     this.x = x;
     this.y = y;
@@ -91,18 +98,21 @@ export class Cell {
     return true;
   }
 
-  setFigure(figure: Figure) {
+  setFigure(figure: Figure): void {
     this.figure = figure;
     this.figure.cell = this;
   }
 
-  public addLostFigure(figure: Figure) {
-    figure.color === Colors.BLACK
-      ? this.board.lostBlackFigures.push(figure)
-      : this.board.lostWhiteFigures.push(figure);
+  public addLostFigure(figure: Figure): void {
+    if (figure.color === Colors.BLACK) {
+      this.board.lostBlackFigures.push(figure);
+      return;
+    }
+
+    this.board.lostWhiteFigures.push(figure);
   }
 
-  public moveFigure(target: Cell) {
+  public moveFigure(target: Cell): void {
     if (this.figure && this.figure.canMove(target)) {
       this.figure.moveFigure(target);
       if (target.figure) {

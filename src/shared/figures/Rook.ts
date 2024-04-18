@@ -1,8 +1,8 @@
 import blackLogo from "@shared/assets/black-rook.png";
 import whiteLogo from "@shared/assets/white-rook.png";
 
-import { Cell } from "../Cell";
-import { Colors } from "../Colors";
+import { Cell } from "../models/Cell";
+import { Colors } from "../models/Colors";
 import { Figure } from "./Figure";
 import { FigureNames } from "./FigureNames";
 

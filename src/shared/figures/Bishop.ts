@@ -1,9 +1,9 @@
-import { Cell } from "../Cell";
-import { Colors } from "../Colors";
-import { Figure } from "./Figure";
-
 import blackLogo from "@shared/assets/black-bishop.png";
 import whiteLogo from "@shared/assets/white-bishop.png";
+
+import { Cell } from "../models/Cell";
+import { Colors } from "../models/Colors";
+import { Figure } from "./Figure";
 import { FigureNames } from "./FigureNames";
 
 export class Bishop extends Figure {
@@ -17,8 +17,8 @@ export class Bishop extends Figure {
     if (!super.canMove(target)) {
       return false;
     }
-    if(this.cell.isEmptyDiagonal(target)){
-      return true
+    if (this.cell.isEmptyDiagonal(target)) {
+      return true;
     }
     return false;
   }

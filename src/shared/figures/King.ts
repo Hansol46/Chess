@@ -1,10 +1,10 @@
-import { Cell } from "../Cell";
-import { Colors } from "../Colors";
-import { Figure } from "./Figure";
-import { FigureNames } from "./FigureNames";
-
 import blackLogo from "@shared/assets/black-king.png";
 import whiteLogo from "@shared/assets/white-king.png";
+
+import { Cell } from "../models/Cell";
+import { Colors } from "../models/Colors";
+import { Figure } from "./Figure";
+import { FigureNames } from "./FigureNames";
 
 export class King extends Figure {
   constructor(color: Colors, cell: Cell) {

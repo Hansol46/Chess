@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "stylelint-config-sass-guidelines",
+    "stylelint-prettier/recommended"
+  ],
+  "rules": {
+    "order/properties-alphabetical-order": null,
+    "selector-class-pattern": null,
+    "max-nesting-depth": 3,
+    "color-named": null
+  },
+  "ignoreFiles": ["node_modules", "build"]
+}
