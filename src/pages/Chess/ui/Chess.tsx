@@ -2,17 +2,17 @@ import React, { FC, useCallback, useEffect, useState } from "react";
 
 import { BoardComponent } from "@widgets/BoardComponent";
 import { Timer } from "@entities/Timer";
-import { Figure, FigureNames } from "@shared/figures";
-import { Board, Colors, Player } from "@shared/models";
+import { Board, ColorPlayer, Colors, Player } from "@shared/models";
+
+import { isKing } from "../lib";
 
 import styles from "./styles.module.sass";
 
-const isKing = (figure: Figure): boolean => figure.name === FigureNames.KING;
+const whitePlayer = new Player(Colors.WHITE);
+const blackPlayer = new Player(Colors.BLACK);
 
 export const Chess: FC = () => {
   const [board, setBoard] = useState(new Board());
-  const [whitePlayer, setWhitePlayer] = useState(new Player(Colors.WHITE)); // можно просто на переменную заменить
-  const [blackPlayer, setBlackPlayer] = useState(new Player(Colors.BLACK)); // можно просто на переменную заменить
   const [currentPlayer, setCurrentPLayer] = useState<Player | null>(null);
 
   const restartGame = useCallback((): void => {
@@ -21,7 +21,7 @@ export const Chess: FC = () => {
     newBoard.addFigures();
     setBoard(newBoard);
     setCurrentPLayer(whitePlayer);
-  }, [whitePlayer]);
+  }, []);
 
   const swapPlayer = useCallback(() => {
     setCurrentPLayer(
@@ -30,13 +30,21 @@ export const Chess: FC = () => {
   }, [currentPlayer?.color]);
 
   useEffect(() => {
-    if (
+    const isAnyKingDead = Boolean(
       board.lostWhiteFigures.find(isKing) ||
-      board.lostBlackFigures.find(isKing)
-    ) {
-      restartGame();
+        board.lostBlackFigures.find(isKing),
+    );
+
+    if (!isAnyKingDead) {
+      return;
     }
-  }, [board.lostBlackFigures, board.lostWhiteFigures, restartGame]);
+
+    restartGame();
+    // eslint-disable-next-line no-alert
+    alert(
+      `Проиграл ${currentPlayer?.color ? ColorPlayer[currentPlayer?.color] : ColorPlayer.White} игрок`,
+    );
+  }, [board, currentPlayer?.color, restartGame]);
 
   useEffect(() => {
     restartGame();

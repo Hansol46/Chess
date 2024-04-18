@@ -71,6 +71,7 @@ module.exports = {
     "no-plusplus": "off",
     // class rules
     "no-new": "off",
+    "react/display-name": "off",
     "simple-import-sort/exports": "warn",
     "import/order": "off",
     "linebreak-style": "off",
