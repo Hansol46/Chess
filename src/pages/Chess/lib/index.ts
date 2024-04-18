@@ -1,0 +1,1 @@
+export { isKing } from "./isKing";
