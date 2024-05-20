@@ -6,7 +6,7 @@ import { Board, ColorPlayer, Colors, Player } from "@shared/models";
 
 import { isKing } from "../lib";
 
-import styles from "./styles.module.sass";
+import styles from "./styles.module.css";
 
 const whitePlayer = new Player(Colors.WHITE);
 const blackPlayer = new Player(Colors.BLACK);

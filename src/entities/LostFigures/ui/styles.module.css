@@ -1,0 +1,7 @@
+.Lost {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  margin: 20px 0px;
+  background-color: lightgray;
+}

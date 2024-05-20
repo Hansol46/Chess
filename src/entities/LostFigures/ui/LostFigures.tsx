@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import { Figure } from "@shared/figures";
 
-import styles from "./styles.module.sass";
+import styles from "./styles.module.css";
 
 interface LostFiguresProps {
   figures: Figure[];
