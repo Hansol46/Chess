@@ -5,7 +5,7 @@ import { LostFigures } from "@entities/LostFigures";
 import { PlayerMenu } from "@entities/PlayerMenu";
 import { Board, Cell, Colors, Player } from "@shared/models";
 
-import styles from "./styles.module.sass";
+import styles from "./styles.module.css";
 
 interface BoardComponentProps {
   board: Board;

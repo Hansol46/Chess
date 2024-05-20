@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 import { Cell, Colors } from "@shared/models";
 
-import styles from "./styles.module.sass";
+import styles from "./styles.module.css";
 
 interface CellComponentProps {
   cell: Cell;
