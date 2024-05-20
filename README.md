@@ -16,7 +16,7 @@ Project made for traning skills and private interes.
 - React/TypeScript
 - Webpack
 - OOP
-- sass modules
+- shadcn/tailwindcss
 
 ## Commands:
 
@@ -58,9 +58,3 @@ Project made for traning skills and private interes.
     # Конфигурация (константы, параметры)
     config/
 ```
-
-### Tasks
-
-1. redux
-2. jest
-3. add login and profile pages

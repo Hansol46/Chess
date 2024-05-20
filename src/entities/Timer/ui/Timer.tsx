@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 
 import { ColorPlayer, Colors, Player } from "@shared/models";
 
-import styles from "./styles.module.sass";
+import styles from "./styles.module.css";
 
 interface TimerProps {
   currentPlayer: Player | null;

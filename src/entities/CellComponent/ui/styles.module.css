@@ -1,0 +1,37 @@
+.Cell {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Cell img {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.SelectedFigure {
+  background-color: var(--selected-sell);
+}
+
+.BlackCell {
+  background-color: var(--black-cell);
+}
+
+.WhiteCell {
+  background-color: var(--white-cell);
+}
+
+.AvailableCellForMove {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: var(--available-cell);
+}
+
+.AvailableCellForAttack {
+  background: green;
+}

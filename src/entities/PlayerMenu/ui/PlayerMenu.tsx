@@ -1,15 +1,18 @@
 import React, { FC } from "react";
+
 import nonameUser from "@shared/assets/noname_user.png";
+import { useLoginContext } from "@shared/context";
 import { ColorPlayer, Colors } from "@shared/models";
 
-import styles from "./styles.module.sass";
+import styles from "./styles.module.css";
 
 interface PlayerMenuProps {
   playerColor: Colors;
 }
 
 export const PlayerMenu: FC<PlayerMenuProps> = ({ playerColor }) => {
-  const playerRole = playerColor === Colors.WHITE ? "Игрок 1" : "Игрок 2";
+  const { userName } = useLoginContext();
+  const playerRole = playerColor === Colors.WHITE ? userName : "Игрок 2";
   const playerName = `${playerRole} ${
     playerColor && `(${ColorPlayer[playerColor]})`
   }`;
