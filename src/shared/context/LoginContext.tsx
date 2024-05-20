@@ -7,13 +7,17 @@ import React, {
 } from "react";
 
 export type LoginContextProps = {
-  userName: string;
-  setUserName: (userName: string) => void;
+  firstPlayerName: string;
+  secondPlayerName: string;
+  setFirstPlayerName: (userName: string) => void;
+  setSecondPlayerName: (userName: string) => void;
 };
 
 export const LoginContext = createContext<LoginContextProps>({
-  userName: "",
-  setUserName: () => {},
+  firstPlayerName: "",
+  secondPlayerName: "",
+  setFirstPlayerName: () => {},
+  setSecondPlayerName: () => {},
 });
 
 export const useLoginContext = (): LoginContextProps =>
@@ -22,10 +26,18 @@ export const useLoginContext = (): LoginContextProps =>
 export const LoginContextProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [userName, setUserName] = useState("");
+  const [firstPlayerName, setFirstPlayerName] = useState("");
+  const [secondPlayerName, setSecondPlayerName] = useState("");
 
   return (
-    <LoginContext.Provider value={{ userName, setUserName }}>
+    <LoginContext.Provider
+      value={{
+        firstPlayerName,
+        secondPlayerName,
+        setFirstPlayerName,
+        setSecondPlayerName,
+      }}
+    >
       {children}
     </LoginContext.Provider>
   );
