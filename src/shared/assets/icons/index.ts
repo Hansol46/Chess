@@ -1,0 +1,1 @@
+export { PawnIcon } from "./PawnIcon";
