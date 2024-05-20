@@ -11,8 +11,9 @@ interface PlayerMenuProps {
 }
 
 export const PlayerMenu: FC<PlayerMenuProps> = ({ playerColor }) => {
-  const { userName } = useLoginContext();
-  const playerRole = playerColor === Colors.WHITE ? userName : "Игрок 2";
+  const { firstPlayerName, secondPlayerName } = useLoginContext();
+  const playerRole =
+    playerColor === Colors.WHITE ? firstPlayerName : secondPlayerName;
   const playerName = `${playerRole} ${
     playerColor && `(${ColorPlayer[playerColor]})`
   }`;
